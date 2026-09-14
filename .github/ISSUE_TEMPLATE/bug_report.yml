@@ -1,0 +1,54 @@
+name: Bug report
+description: Something does not work as described in the README.
+labels: ["bug", "needs-triage"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected and what you got instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Index https://github.com/...
+        2. Ask "..."
+        3. See error
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - web (Next.js)
+        - rag-service (FastAPI)
+        - Database (Supabase migrations, RLS)
+        - Docker / deployment
+        - Not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Where does it happen
+      options:
+        - Self-hosted with Docker Compose
+        - Running each app locally
+        - reposeer.me
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit or image tag
+      placeholder: 5d1042f
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Relevant output from the browser console or `docker compose logs`. Remove tokens and keys before pasting.
+      render: shell

@@ -1,0 +1,5 @@
+* @todfilipe
+
+/supabase/migrations/ @todfilipe
+/apps/web/app/api/stripe/ @todfilipe
+/apps/rag-service/app/core/auth.py @todfilipe

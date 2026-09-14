@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or idea
+    url: https://github.com/todfilipe/reposeer/discussions
+    about: Ask how something works or suggest a direction in Discussions.
+  - name: Security vulnerability
+    url: https://github.com/todfilipe/reposeer/security/advisories/new
+    about: Report it privately. Please do not open a public issue.

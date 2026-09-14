@@ -1,0 +1,27 @@
+services:
+  rag-service:
+    image: ghcr.io/todfilipe/reposeer-rag-service:${IMAGE_TAG:-latest}
+    env_file: ./apps/rag-service/.env
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request; urllib.request.urlopen("http://localhost:8000/health")
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  web:
+    image: ghcr.io/todfilipe/reposeer-web:${IMAGE_TAG:-latest}
+    env_file: ./apps/web/.env.local
+    environment:
+      RAG_SERVICE_URL: http://rag-service:8000
+    ports:
+      - "127.0.0.1:${WEB_PORT:-3000}:3000"
+    depends_on:
+      rag-service:
+        condition: service_healthy
+    restart: unless-stopped
